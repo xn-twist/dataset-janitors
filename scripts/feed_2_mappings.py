@@ -22,10 +22,6 @@ def main():
         # create a list with only the mapped characters
         mapped_characters[mapping['character']] = mapping['potential_spoofs']
 
-    print(mapped_characters)
-    print("\n\n\n")
-    # print(existing_mappings)
-
     # add them to the mappings branch of the API
     for item in items_in_feed:
         # if this character has already been mapped...
