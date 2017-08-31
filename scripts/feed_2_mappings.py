@@ -9,7 +9,7 @@ CONFIG_FILE_PATH = "./xn.conf"
 
 
 def main():
-    """."""
+    """Move characters from the feed to the mappings."""
     # instantiate an instance of the XN-Twist Python SDK
     xn_sdk = xntwist_python.XnTwistSDK(CONFIG_FILE_PATH)
 
@@ -35,7 +35,7 @@ def main():
     for item in items_in_feed:
         # if this character has already been mapped...
         if item['character'] in mapped_characters.keys():
-            # see if the spoof character has already been mapped to the character
+            # track whether or not the spoof char has been mapped to the char
             new_spoof = True
 
             for possible_spoof in mapped_characters[item['character']]['potential_spoofs']:
@@ -93,6 +93,7 @@ def main():
 
         print("item: {}".format(item))
         xn_sdk.delete_feed_item(item)
+
 
 if __name__ == '__main__':
     main()
