@@ -14,10 +14,10 @@ def main():
     xn_sdk = xntwist_python.XnTwistSDK(CONFIG_FILE_PATH)
 
     # retrieve all of the items from the feed
-    items_in_feed = xn_sdk.get_feed()['_items']
+    items_in_feed = xn_sdk.get_branch('feed')['_items']
 
     # retrieve all of the current mappings
-    existing_mappings = xn_sdk.get_mappings()['_items']
+    existing_mappings = xn_sdk.get_branch('mappings')['_items']
 
     # create dictionary with mapped characters as keys and the spoofs as values
     mapped_characters = {}
@@ -92,7 +92,7 @@ def main():
             }
 
         print("item: {}".format(item))
-        xn_sdk.delete_feed_item(item)
+        xn_sdk.delete_feed_item(item, "feed")
 
 
 if __name__ == '__main__':
