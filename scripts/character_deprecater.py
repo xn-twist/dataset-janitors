@@ -6,7 +6,7 @@ from xntwist_python_sdk import xntwist_python
 
 # assume there is a configuration file in the current directory
 CONFIG_FILE_PATH = "./xn.conf"
-CHARACTER_DEPRICATION_THRESHOLD = 10
+CHARACTER_DEPRECATION_THRESHOLD = 10
 
 
 def main():
@@ -28,7 +28,7 @@ def main():
 
     for key in suggested_deprecation_count:
         # if the character has been voted for deprecation too many times...
-        if suggested_deprecation_count[key] > CHARACTER_DEPRICATION_THRESHOLD:
+        if suggested_deprecation_count[key] > CHARACTER_DEPRECATION_THRESHOLD:
             # add the character to the list of deprecated characters
             xn_sdk.add_item({"deprecated_character": key},
                             "deprecated_characters")
