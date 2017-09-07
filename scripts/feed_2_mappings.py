@@ -49,7 +49,7 @@ def main():
                     }
                     new_spoof = False
                     # update the mapping
-                    response = xn_sdk.update_existing_mapping(mapped_characters[item['character']]['metadata'], updated_mapping)
+                    response = xn_sdk.update_item(mapped_characters[item['character']]['metadata'], updated_mapping, "mappings")
                     # update the etag in the local dataset
                     mapped_characters[item['character']]['metadata']['_etag'] = response['_etag']
                     break
@@ -68,7 +68,7 @@ def main():
                     'potential_spoofs': mapped_characters[item['character']]['potential_spoofs']
                 }
                 # update the mapping
-                response = xn_sdk.update_existing_mapping(mapped_characters[item['character']]['metadata'], updated_mapping)
+                response = xn_sdk.update_item(mapped_characters[item['character']]['metadata'], updated_mapping, "mappings")
                 # update the etag in the local data
                 mapped_characters[item['character']]['metadata']['_etag'] = response['_etag']
         # if this character has not been mapped yet
@@ -81,7 +81,7 @@ def main():
                 }]
             }
             # add the new mapping to the API
-            response = xn_sdk.add_new_mapping(new_mapping)
+            response = xn_sdk.add_item(new_mapping, "mappings")
             # add the newly mapped character to the local copy of mapped chars.
             mapped_characters[item['character']] = {}
             mapped_characters[item['character']]['potential_spoofs'] = new_mapping['potential_spoofs']
