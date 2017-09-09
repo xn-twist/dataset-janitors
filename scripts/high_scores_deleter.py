@@ -21,6 +21,12 @@ def main():
     for high_score in high_scores:
         xn_sdk.delete_item(high_score, HIGH_SCORES_PATH)
 
+    # add a placeholder entry
+    xn_sdk.add_item({
+        'initials': "AAA",
+        'score': 5
+    }, HIGH_SCORES_PATH)
+
 
 if __name__ == '__main__':
     main()
