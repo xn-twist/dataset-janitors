@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """Script to delete the high scores every day."""
 
+import os
+
 from xn_twist_python_sdk import xn_twist_python
 
 # assume there is a configuration file in the current directory
@@ -12,7 +14,7 @@ HIGH_SCORES_PATH = "high_scores"
 def main():
     """Move characters from the feed to the mappings."""
     # instantiate an instance of the XN-Twist Python SDK
-    xn_sdk = xn_twist_python.XnTwistSDK(CONFIG_FILE_PATH)
+    xn_sdk = xn_twist_python.XnTwistSDK(os.path.abspath(os.path.join(os.path.dirname(__file__), CONFIG_FILE_PATH)))
 
     # retrieve all of the high scores
     high_scores = xn_sdk.get_branch(HIGH_SCORES_PATH)['_items']

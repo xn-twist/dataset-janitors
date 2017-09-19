@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """Removed characters suggested for deprecation from the list of possible spoofs."""
 
+import os
+
 from xn_twist_python_sdk import xn_twist_python
 
 # assume there is a configuration file in the current directory
@@ -12,7 +14,7 @@ CHARACTER_DEPRECATION_THRESHOLD = 10
 def main():
     """Move characters from the feed to the mappings."""
     # instantiate an instance of the XN-Twist Python SDK
-    xn_sdk = xn_twist_python.XnTwistSDK(CONFIG_FILE_PATH)
+    xn_sdk = xn_twist_python.XnTwistSDK(os.path.abspath(os.path.join(os.path.dirname(__file__), CONFIG_FILE_PATH)))
 
     # get the characters that have been suggested for deprecation
     suggestions = xn_sdk.get_branch("suggested_deprecations")['_items']
