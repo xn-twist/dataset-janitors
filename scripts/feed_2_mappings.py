@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Script for moving characters from the feed to the mappings."""
 
-from xntwist_python_sdk import xntwist_python
+from xn_twist_python_sdk import xn_twist_python
 
 # assume there is a configuration file in the current directory
 CONFIG_FILE_PATH = "./xn.conf"
@@ -11,7 +11,7 @@ CONFIG_FILE_PATH = "./xn.conf"
 def main():
     """Move characters from the feed to the mappings."""
     # instantiate an instance of the XN-Twist Python SDK
-    xn_sdk = xntwist_python.XnTwistSDK(CONFIG_FILE_PATH)
+    xn_sdk = xn_twist_python.XnTwistSDK(CONFIG_FILE_PATH)
 
     # retrieve all of the items from the feed
     items_in_feed = xn_sdk.get_branch('feed')['_items']
