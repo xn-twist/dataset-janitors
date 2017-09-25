@@ -94,7 +94,7 @@ def main():
             }
 
         print("item: {}".format(item))
-        xn_sdk.delete_feed_item(item, "feed")
+        xn_sdk.delete_item(item, "feed")
 
 
 if __name__ == '__main__':
