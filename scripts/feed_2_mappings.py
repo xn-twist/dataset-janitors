@@ -56,11 +56,8 @@ def main():
                     mapped_characters[item['character']]['metadata']['_etag'] = response['_etag']
                     break
 
-            print("new spoof: {}".format(new_spoof))
-
             # if this spoof character has never been mapped to this character, add the new, potential spoof
             if new_spoof:
-                print(mapped_characters[item['character']]['potential_spoofs'])
                 mapped_characters[item['character']]['potential_spoofs'].append({
                     'votes': 1,
                     'spoof_character': item['spoof']
@@ -93,7 +90,6 @@ def main():
                 '_id': response['_id']
             }
 
-        print("item: {}".format(item))
         xn_sdk.delete_item(item, "feed")
 
 
