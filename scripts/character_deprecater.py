@@ -31,9 +31,17 @@ def main():
     for key in suggested_deprecation_count:
         # if the character has been voted for deprecation too many times...
         if suggested_deprecation_count[key] > CHARACTER_DEPRECATION_THRESHOLD:
-            # add the character to the list of deprecated characters
-            xn_sdk.add_item({"deprecated_character": key},
-                            "deprecated_characters")
+            try:
+                # add the character to the list of deprecated characters
+                xn_sdk.add_item({"deprecated_character": key},
+                                 "deprecated_characters")
+            except RuntimeWarning as e:
+                # if there is an error because the character already exists on the deprecated_characters endpoint, just move on
+                if "is not unique" in str(e):
+                    pass
+                # otherwise, raise the warning
+                else:
+                    raise
 
             # delete the character from the list of suggested deprecations
             for suggestion in suggestions:
