@@ -8,7 +8,7 @@ from xn_twist_python_sdk import xn_twist_python
 
 # assume there is a configuration file in the current directory
 CONFIG_FILE_PATH = "./xn.conf"
-CHARACTER_DEPRECATION_THRESHOLD = 10
+CHARACTER_DEPRECATION_THRESHOLD = 7
 
 
 def main():
@@ -39,12 +39,12 @@ def main():
             for suggestion in suggestions:
                 # if the character in the suggestion is the one we are deprecating, remove it from the list of suggestions
                 if suggestion['character'] == key:
-                    xn_sdk.delete(suggestion, "suggested_deprecations")
+                    xn_sdk.delete_item(suggestion, "suggested_deprecations")
 
             # delete the character from the list of non_basic_characters
             for char in non_basic_characters:
                 if char['potential_spoof'] == key:
-                    xn_sdk.delete(char, "non_basic_characters")
+                    xn_sdk.delete_item(char, "non_basic_characters")
                     break
 
 
